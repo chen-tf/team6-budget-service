@@ -72,6 +72,16 @@ class BudgetServiceTest {
                               31.00);
     }
 
+    @Test
+    void cross_three_months() {
+        givenBudget(new Budget("202303", 31),
+                    new Budget("202304", 300),
+                    new Budget("202305", 3100));
+        budgetBetweenShouldBe(LocalDate.of(2023, 3, 31),
+                              LocalDate.of(2023, 5, 3),
+                              601.00);
+    }
+
     private void givenBudget(Budget... budget) {
         when(budgetRepository.getAll())
                 .thenReturn(budget);

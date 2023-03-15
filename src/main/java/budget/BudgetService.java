@@ -17,7 +17,7 @@ public class BudgetService {
         }
 
         return Arrays.stream(budgetRepository.getAll())
-                     .mapToDouble(budget -> budget.getAmountBetween(start, end))
+                     .mapToDouble(budget -> budget.calculateAmountBetween(start, end))
                      .sum();
     }
 

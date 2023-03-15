@@ -16,16 +16,16 @@ public class Budget {
         this.amount = amount;
     }
 
-    public Double getAmountBetween(LocalDate queryStartTime, LocalDate queryEndTime) {
+    public Double calculateAmountBetween(LocalDate queryStartTime, LocalDate queryEndTime) {
         if (!isBetween(queryStartTime, queryEndTime)) {
             return 0.0;
         }
 
-        return Double.valueOf(amount) * getDaysBetween(queryStartTime, queryEndTime)
+        return Double.valueOf(amount) * calculateBudgetDaysBetween(queryStartTime, queryEndTime)
                / getYearMonth().lengthOfMonth();
     }
 
-    private int getDaysBetween(LocalDate queryStartTime, LocalDate queryEndTime) {
+    private int calculateBudgetDaysBetween(LocalDate queryStartTime, LocalDate queryEndTime) {
         final YearMonth budgetYearMonth = getYearMonth();
         final LocalDate start = YearMonth.from(queryStartTime).equals(budgetYearMonth)
                                 ? queryStartTime

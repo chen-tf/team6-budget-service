@@ -36,10 +36,10 @@ public class Budget {
         return (int) ChronoUnit.DAYS.between(start, end) + 1;
     }
 
-    private boolean isBetween(LocalDate startTime, LocalDate endTime) {
-        // startTime <= yearMonth <= endTime
-        return !(getYearMonth().isBefore(YearMonth.from(startTime))
-                 || getYearMonth().isAfter(YearMonth.from(endTime)));
+    private boolean isBetween(LocalDate queryStartTime, LocalDate queryEndTime) {
+        // queryStartTime <= yearMonth <= queryEndTime
+        return !(getYearMonth().isBefore(YearMonth.from(queryStartTime))
+                 || getYearMonth().isAfter(YearMonth.from(queryEndTime)));
     }
 
     private YearMonth getYearMonth() {
